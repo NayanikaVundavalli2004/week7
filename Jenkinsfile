@@ -4,14 +4,14 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Building Docker image..."
-                sh "docker build -t mypythonflaskapp ."
+                bat "docker build -t mypythonflaskapp ."
             }
         }
         stage('Run') {
             steps {
                 echo "Running container..."
-                sh "docker rm -f mycontainer || true"
-                sh "docker run -d -p 5050:5000 --name mycontainer mypythonflaskapp"
+                bat "docker rm -f mycontainer || true"
+                bat "docker run -d -p 5050:5000 --name mycontainer mypythonflaskapp"
             }
         }
     }
